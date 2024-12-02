@@ -14,8 +14,12 @@ st.title("Stock Market Analyzer")
 st.sidebar.title("Stock Selection")
 stock_symbol = st.sidebar.text_input("Enter Stock Symbol (e.g., META, AAPL):")
 
+# Initialize session state for completion tracking
+if "completed" not in st.session_state:
+    st.session_state.completed = False
+
 # Main Section
-if stock_symbol:
+if stock_symbol and not st.session_state.completed:
     st.subheader(f"Analyzing Stock: {stock_symbol}")
 
     try:
@@ -32,7 +36,6 @@ if stock_symbol:
             "Close": [float(data["4. close"]) for data in time_series_data.values()],
         }
         filtered_data = filter_stock_data(stock_data, days=30)
-        #st.write("Filtered stock data for the graph:", filtered_data)
 
         # Step 3: Analyze stock data using Mistral
         mistral_analysis = analyze_stock_with_mistral(stock_symbol)
@@ -57,7 +60,13 @@ if stock_symbol:
                 mime="application/pdf"
             )
 
+        # Mark process as completed
+        st.session_state.completed = True
+
     except Exception as e:
         st.error(f"Error: {e}")
+
+elif st.session_state.completed:
+    st.success("Analysis completed. You can enter a new stock symbol to start again.")
 else:
     st.write("Please enter a stock symbol in the sidebar.")

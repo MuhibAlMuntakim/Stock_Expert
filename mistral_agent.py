@@ -47,28 +47,29 @@ def analyze_stock_with_mistral(stock_symbol):
     ]
 
     # Define the initial prompt
-    prompt =(
-    f"I need a detailed analysis of the stock {stock_symbol}. "
-    "You have access to a tool called 'fetch_alpha_vantage_data' that retrieves stock market data, including daily closing prices. "
-    "Follow these steps to conduct a comprehensive analysis and provide actionable insights: "
+    prompt = (
+    f"Provide an investment analysis for the stock {stock_symbol}. "
+    "Use the provided tool to fetch stock market data, including daily closing prices, and follow these steps to deliver actionable insights: "
     "\n\n"
-    "1. Fetch the stock data for the past 30 days using the provided tool. "
+    "1. Retrieve stock data for the past 30 days using the 'fetch_alpha_vantage_data' tool. "
     "\n\n"
-    "2. Perform the following analysis: "
-    "- Calculate price volatility as the percentage difference between the highest and lowest closing prices over the period. "
-    "- Identify the overall trend in the stock price (e.g., uptrend, downtrend, or flat) and note significant turning points. "
-    "- If trading volume data is available, analyze it for any significant correlations with price changes."
-    "\n\n"
-    "3. Based on the analysis, classify the stock into one of the following categories: "
+    "2. Analyze the data to classify the stock based on the following risk categories: "
     "- 'Low Risk': Minimal price fluctuations, stable trend, and low volatility. "
     "- 'Moderate Risk': Moderate price changes and trend variations. "
     "- 'High Risk': High volatility, frequent trend reversals, or sharp price movements."
     "\n\n"
-    "4. Provide a detailed explanation for the classification, referencing key data points from the analysis. "
+    "3. Begin your response with a clear statement of the classification (e.g., 'NVDA is classified as High Risk'). "
+    "Then, provide a detailed explanation of the classification by referencing key metrics and observations from your analysis: "
+    "- Calculate price volatility as the percentage difference between the highest and lowest closing prices over the period. "
+    "- Highlight the overall trend (e.g., uptrend, downtrend, or flat) and note significant turning points. "
+    "- If trading volume data is available, analyze its relationship with price changes and note key observations."
     "\n\n"
-    "5. Offer investment recommendations based on your findings: "
+    "4. Offer investment recommendations based on your findings: "
     "- Suggest whether to 'Buy,' 'Hold,' or 'Sell' the stock and explain the reasoning behind your advice."
+    "\n\n"
+    "Structure your response professionally, starting with the classification, followed by a summary of the analysis, and concluding with actionable recommendations."
 )
+
 
 
     # Send the initial request to Mistral
