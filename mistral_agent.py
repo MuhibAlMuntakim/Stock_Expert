@@ -53,21 +53,15 @@ def analyze_stock_with_mistral(stock_symbol):
     "\n\n"
     "1. Retrieve stock data for the past 30 days using the 'fetch_alpha_vantage_data' tool. "
     "\n\n"
-    "2. Analyze the data to classify the stock based on the following risk categories: "
-    "- 'Low Risk': Minimal price fluctuations, stable trend, and low volatility. "
-    "- 'Moderate Risk': Moderate price changes and trend variations. "
-    "- 'High Risk': High volatility, frequent trend reversals, or sharp price movements."
-    "\n\n"
-    "3. Begin your response with a clear statement of the classification (e.g., 'NVDA is classified as High Risk'). "
+    "2. Begin your response with a clear statement of the classification (e.g., 'NVDA is classified as High Risk'). "
     "Then, provide a detailed explanation of the classification by referencing key metrics and observations from your analysis: "
     "- Calculate price volatility as the percentage difference between the highest and lowest closing prices over the period. "
     "- Highlight the overall trend (e.g., uptrend, downtrend, or flat) and note significant turning points. "
     "- If trading volume data is available, analyze its relationship with price changes and note key observations."
     "\n\n"
-    "4. Offer investment recommendations based on your findings: "
+    "3. Offer investment recommendations based on your findings: "
     "- Suggest whether to 'Buy,' 'Hold,' or 'Sell' the stock and explain the reasoning behind your advice."
     "\n\n"
-    "Structure your response professionally, starting with the classification, followed by a summary of the analysis, and concluding with actionable recommendations."
 )
 
 
